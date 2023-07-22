@@ -121,4 +121,33 @@ public class DemoController : ControllerBase
                 Message = "Summary of clients",
             }
         };
+
+    [HttpGet(nameof(GetOrderResponse))]
+    public OrderResponse GetOrderResponse()
+        => new()
+        {
+            Data1 = new()
+            {
+                Date = DateTime.Now,
+                UserId = 132,
+            },
+            Data2 = new()
+            {
+                Date = DateTime.Now.AddDays(1).AddHours(3),
+                Cost = 123.45,
+            },
+            Items = new()
+            {
+                new()
+                {
+                    Name = "Item 1",
+                    Quantity = 1,
+                },
+                new()
+                {
+                    Name = "Item 2",
+                    Quantity = 2,
+                },
+            }
+        };
 }

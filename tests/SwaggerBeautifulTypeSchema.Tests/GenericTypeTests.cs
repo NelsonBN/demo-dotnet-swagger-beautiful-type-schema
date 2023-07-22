@@ -52,4 +52,17 @@ public class GenericTypeTests
         // Assert
         act.Should().Be(expected);
     }
+
+
+    [Theory]
+    [InlineData(typeof(OrderResponse), "OrderResponse")]
+    public void InheritanceFromGeneric_BeautifulName_Expected(Type type, string expected)
+    {
+        // Arrange && Act
+        var act = type.BeautifulName();
+
+
+        // Assert
+        act.Should().Be(expected);
+    }
 }

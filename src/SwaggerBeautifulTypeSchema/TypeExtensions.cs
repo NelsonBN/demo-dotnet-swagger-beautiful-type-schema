@@ -19,25 +19,14 @@ internal static class TypeExtensions
             return type.Name;
         }
 
+
         var typeName = type.GetName();
-
-        var baseType = type.BaseType;
-        while(baseType is not null && !baseType.IsObjectType())
-        {
-            var baseTypeName = baseType.GetName();
-            if(!string.IsNullOrWhiteSpace(baseTypeName))
-            {
-                typeName = $"{baseTypeName}.{typeName}";
-            }
-
-            baseType = baseType.BaseType;
-        }
 
 
         // Is nested object?
         if(type.DeclaringType is not null)
         {
-            baseType = type.DeclaringType;
+            var baseType = type.DeclaringType;
             while(baseType is not null && !baseType.IsObjectType())
             {
                 var baseTypeName = baseType.GetName();
@@ -57,7 +46,7 @@ internal static class TypeExtensions
         if(!string.IsNullOrEmpty(typeName))
         {
             typeName = BeautifulTypeRegex._genericIndexRegex()
-                                       .Replace(typeName, "");
+                                         .Replace(typeName, "");
         }
 
         return typeName;
