@@ -19,6 +19,8 @@ public class ListsTests
     [InlineData(typeof(List<double>), false)]
     [InlineData(typeof(ArrayList), true)]
     [InlineData(typeof(Array), true)]
+    [InlineData(typeof(ListSummary), false)]
+    [InlineData(typeof(ResponseSummary<ProductResponse>), false)]
     public void Types_IsArray_Expected(Type? type, bool expected)
     {
         // Arrange && Act
@@ -77,6 +79,8 @@ public class ListsTests
     [InlineData(typeof(List<double>), true)]
     [InlineData(typeof(ArrayList), true)]
     [InlineData(typeof(Array), true)]
+    [InlineData(typeof(ListSummary), false)]
+    [InlineData(typeof(ResponseSummary<ProductResponse>), false)]
     public void Types_IsListingType_Expected(Type type, bool expected)
     {
         // Arrange && Act
@@ -135,6 +139,8 @@ public class ListsTests
     [InlineData(typeof(List<double>), false)]
     [InlineData(typeof(ArrayList), false)]
     [InlineData(typeof(Array), false)]
+    [InlineData(typeof(ListSummary), false)]
+    [InlineData(typeof(ResponseSummary<ProductResponse>), false)]
     public void Types_IsIndexedListType_Expected(Type type, bool expected)
     {
         // Arrange && Act

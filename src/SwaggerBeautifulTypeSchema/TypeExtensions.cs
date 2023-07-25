@@ -92,10 +92,10 @@ internal static class TypeExtensions
             _ => type.Name
         };
 
+    // This code gets the name of the type, unless it is a primitive type. In that case, it returns null.
     internal static string? GetNameIfNotPrimitive(this Type type)
         => type switch
         {
-            Type when type == typeof(bool) => null,
             Type when type == typeof(bool) => null,
             Type when type == typeof(byte) => null,
             Type when type == typeof(sbyte) => null,
@@ -172,10 +172,18 @@ internal static class TypeExtensions
         }
 
         return type.GetInterfaces().Any(a =>
-           typeof(IEnumerable<>).IsAssignableFrom(a) ||
-           typeof(IEnumerable<>).IsAssignableFrom(a.GetGenericTypeDefinition()));
+            typeof(IEnumerable<>).IsAssignableFrom(a) ||
+            (a.IsGenericType && typeof(IEnumerable<>).IsAssignableFrom(a.GetGenericTypeDefinition())));
     }
 
+    // The following code is used to determine whether a type is an
+    // indexed list type. An indexed list type is a type that inherits
+    // from IDictionary<TKey, TValue> or Dictionary<TKey, TValue>.
+    // The code uses the IsGenericType property of the Type class to
+    // determine whether the type is generic. The code uses the
+    // IsAssignableFrom method of the Type class to determine whether
+    // the type inherits from IDictionary<TKey, TValue> or
+    // Dictionary<TKey, TValue>.
     internal static bool IsIndexedListType(this Type type)
     {
         if(type is null)

@@ -53,7 +53,6 @@ public class GenericTypeTests
         act.Should().Be(expected);
     }
 
-
     [Theory]
     [InlineData(typeof(OrderResponse), "OrderResponse")]
     public void InheritanceFromGeneric_BeautifulName_Expected(Type type, string expected)

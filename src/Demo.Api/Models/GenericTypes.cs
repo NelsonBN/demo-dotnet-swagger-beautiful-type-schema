@@ -48,3 +48,8 @@ public record ListSummary : ITSummary
 {
     public string? Message { get; set; }
 }
+
+public class ResponseSummary<T> : ITSummary
+{
+    public T? Data { get; init; }
+}
