@@ -4,13 +4,15 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <InvariantGlobalization>true</InvariantGlobalization>
+
+    <RootNamespace>Demo.Api</RootNamespace>
+    <AssemblyName>Demo.Api</AssemblyName>
   </PropertyGroup>
 
 
   <!-- DOCUMENTATION -->
   <PropertyGroup>
-    <DocumentationFile>bin\Fidgrove.Support.API.xml</DocumentationFile>
+    <DocumentationFile>bin\Demo.Api.xml</DocumentationFile>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn> <!-- Prevent XML documentation warnings -->
   </PropertyGroup>
